@@ -1,0 +1,50 @@
+function [u]=Newton(n,x,y,z)
+% n la bac cua da thuc newton
+% x=[x0,x1,...xn]
+% y=[y0,y1,...yn]
+% z=[z0,z1,...zn] gia tri can noi suy
+a=length(x);
+b=length(y);
+if or(a <= n, b <= n)
+    disp('Chua du dieu kien de noi suy, Vui long check lai!')
+else
+    for k=1:length(z)
+        for i=1:n+1
+            d(i,1)=y(i);
+        end
+        for j=2:n+1
+            for i=j:n+1
+                d(i,j)=d(i,j-1)-d(i-1,j-1);
+            end
+        end
+        h=x(2)-x(1);
+        p(k)=d(n+1,n+1);
+        for i=n:-1:1
+            p(k)=p(k)*(z(k)-x(i))/(i*h)+d(i,i);
+        end
+    end
+    u=p';
+    d=[x(1:n+1)',d(:,:)];
+    disp('BANG SAI PHAN: ')
+    disp('        Xi                  Yi')
+    disp(d)
+    z=[z(:),u(:)]';
+    disp('ket qua noi suy newton : ')
+    disp('        Xi           Yi')
+    fprintf('%15.8f%15.8f\n',z)
+end
+    
+
+
+
+****
+Giả sử:
+input: n = 7
+x=[0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9]
+y=sin(x)
+z=[0.1235 0.3548 0.3478 0.4798 0.6821]
+output :
+Kết quả cua z sau khi nội suy.
+- Lệnh : x=[0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9]
+y=sin(x)
+Newton(7,x,y,[0.1235 0.3548 0.3478 0.4798 0.6821])

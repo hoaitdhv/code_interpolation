@@ -1,0 +1,42 @@
+x = [0 1 2.5 3.6 5 7 8.1 10];
+y = sin(x);
+new_x = 0:.25:10;
+new_y = spline(x,y,new_x);
+grid on
+plot(x,y,'x',new_x,new_y)
+
+
+input : 
+x = [0 1 2.5 3.6 5 7 8.1 10];
+y = sin(x);
+new_x = 0:.25:10;
+
+output : 
+new_y = spline(x,y,new_x);
+Plot(x,y,new_x,new_y)
+
+
+x1 = [‐1 ‐0.5 0 0.5 1.0];
+y1 = f31(x1);
+n1 = newton(x1,y1);
+xx = [‐1:0.02: 1]; %pham vi noi suy
+yy1 = polyval(n1,xx); %ham xap xi qua 5 diem
+yy = f31(xx); %ham thuc
+subplot(221)
+plot(xx,yy,ʹk‐ʹ, x, y, ʹoʹ, xx, yy1, ʹbʹ);
+title(ʹNewtonʹ)
+subplot(223)
+plot(xx, yy1‐yy, ʹrʹ) %do thi sai so
+N = 4;
+k = [0:N];
+x = cos((2*N + 1 ‐ 2*k)*pi/2/(N + 1));
+y = f31(x);
+c = newton(x, y) %da thuc noi suy dua tren cac nut Chebyshev
+xx = [‐1:0.02: 1]; %doan noi suy
+yy = f31(xx); %do thi ham thuc
+yy1 = polyval(c, xx); %do thi ham xap xi
+subplot(222)
+plot(xx, yy, ʹk‐ʹ, x, y, ʹoʹ, xx, yy1, ʹbʹ)
+title(ʹChebyshevʹ)
+subplot(224)
+plot(xx, yy1‐yy, ʹrʹ) %do thi sai so
